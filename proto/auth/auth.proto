@@ -6,6 +6,7 @@ option go_package = "github.com/maYkiss56/protos/gen/go/auth/authv1;authv1";
 
 service Auth {
   rpc Register (RegisterRequest) returns (RegisterResponse);
+  rpc Login (LoginRequest) returns (LoginResponse);
 }
 
 message RegisterRequest {
@@ -15,4 +16,13 @@ message RegisterRequest {
 
 message RegisterResponse {
   string user_id = 1;
+}
+
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  string token = 1;
 }
