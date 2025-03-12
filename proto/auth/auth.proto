@@ -6,8 +6,6 @@ option go_package = "github.com/maYkiss56/protos/gen/go/auth/authv1;authv1";
 
 service Auth {
   rpc Register (RegisterRequest) returns (RegisterResponse);
-  rpc Login (LoginRequest) returns (LoginResponse);
-  rpc IsAdmin(IsAdminRequest) returns (IsAdminResponse);
 }
 
 message RegisterRequest {
@@ -18,22 +16,3 @@ message RegisterRequest {
 message RegisterResponse {
   string user_id = 1;
 }
-
-message LoginRequest {
-  string email = 1;
-  string password = 2;
-  int32 app_id = 3; // id приложения, куда логинимся
-}
-
-message LoginResponse {
-  string token = 1; // jwt-token
-}
-
-message IsAdminRequest {
-  string user_id = 1; // uuid пользователя которого хотим проверить
-}
-
-message IsAdminResponse {
-  bool is_admin = 1; // да или нет (админ)
-}
-
