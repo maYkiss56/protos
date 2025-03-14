@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package customer;
+
+option go_package = "github.com/maYkiss56/protos/gen/go/seller/customerv1;customerv1";
+
+import "google/protobuf/struct.proto";
+
+service Customer {
+  rpc GetProductByUUID (GetProductByUUIDRequest) returns (GetProductByUUIDResponse);
+  rpc GetProductByArticle (GetProductByArticleRequest) returns (GetProductByArticleResponse);
+  rpc GetProductByTags (GetProductByTagsRequest) returns (GetProductByTagsResponse);
+  rpc GetAllProduct (GetAllProductRequest) returns (GetAllProductResponse);
+}
+
+message Product {
+  string id = 1;
+  string article = 2;
+  string title = 3;
+  string description = 4;
+  google.protobuf.Struct characteristics = 5;
+  int32 price = 6;
+  int32 sale = 7;
+  int32 sale_price = 8;
+  int32 rating = 9;
+  string image_url = 10;
+  int32 stock_quantity = 11;
+  int32 sold_quantity = 12;
+  repeated string tags = 13;
+  bool is_available = 14;
+  string categories_id = 15;
+}
+
+message GetProductByUUIDRequest {
+  string id = 1;
+}
+
+message GetProductByUUIDResponse {
+  Product product = 1;
+}
+
+message GetProductByArticleRequest {
+  string article = 1;
+}
+
+message GetProductByArticleResponse {
+  Product product = 1;
+}
+
+message GetProductByTagsRequest {
+  repeated string tags = 1;
+}
+
+message GetProductByTagsResponse {
+  Product product = 1;
+}
+
+message GetAllProductRequest {}
+
+message GetAllProductResponse {
+  repeated Product products = 1;
+}
