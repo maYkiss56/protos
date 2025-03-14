@@ -8,6 +8,8 @@ service Auth {
   rpc Register (RegisterRequest) returns (RegisterResponse);
   rpc Login (LoginRequest) returns (LoginResponse);
   rpc Logout (LogoutRequest) returns (LogoutResponse);
+  rpc UpdateRole (UpdateRoleRequest) returns (UpdateRoleResponse);
+  rpc ValidateToken (ValidateTokenRequest) returns (ValidateTokenResponse);
 }
 
 message RegisterRequest {
@@ -35,4 +37,23 @@ message LogoutRequest {
 
 message LogoutResponse {
   string message = 1;
+}
+
+message UpdateRoleRequest {
+  string user_id = 1;
+  repeated string role = 2;
+}
+
+message UpdateRoleResponse {
+  string message = 1;
+}
+
+message ValidateTokenRequest {
+  string token = 1;
+}
+
+message ValidateTokenResponse {
+  string user_id = 1;
+  repeated string roles = 2;
+  bool valid = 3;
 }
