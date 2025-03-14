@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package seller;
+
+option go_package = "github.com/maYkiss56/protos/gen/go/seller/sellerv1;sellerv1";
+
+import "google/protobuf/struct.proto";
+
+service Seller {
+    rpc CreateProduct (CreateProductRequest) returns (CreateProductResponse);
+    rpc UpdateProduct (UpdateProductRequest) returns (UpdateProductResponse);
+    rpc DeleteProduct (DeleteProductRequest) returns (DeleteProductResponse);
+}
+
+message Product {
+    string id = 1;
+    string article = 2;
+    string title = 3;
+    string description = 4;
+    google.protobuf.Struct characteristics = 5;
+    int32 price = 6;
+    int32 sale = 7;
+    int32 sale_price = 8;
+    int32 rating = 9;
+    string image_url = 10;
+    int32 stock_quantity = 11;
+    int32 sold_quantity = 12;
+    repeated string tags = 13;
+    bool is_available = 14;
+    string categories_id = 15;
+}
+
+message CreateProductRequest {
+    Product product = 1;
+}
+
+message CreateProductResponse {
+    string id = 1;
+}
+
+message UpdateProductRequest {
+    string id = 1;
+    Product product = 2;
+}
+
+message UpdateProductResponse {
+    string message = 1;
+}
+
+message DeleteProductRequest {
+    string id = 1;
+}
+message DeleteProductResponse {
+    string id = 1;
+    string message = 2;
+}
