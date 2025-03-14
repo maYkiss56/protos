@@ -52,7 +52,7 @@ message GetProductByTagsRequest {
 }
 
 message GetProductByTagsResponse {
-  repeated Product product = 1;
+  repeated Product products = 1;
 }
 
 message GetAllProductRequest {}
